@@ -14,7 +14,7 @@ database.query(query,[account.username,account.password],(err,rows)=>{
             database.query(query,[accountbody.username,accountbody.password],(err,rows)=>{
                 if (!err) {
                     if (rows.length == 0 ) {
-                        return res.status(404).json({status:"false"});
+                        return res.status(404).json({status:"false",response:"Unknow username or Password"});
                     }else{
                         
                         return res.status(200).json({status:"true",rows});
