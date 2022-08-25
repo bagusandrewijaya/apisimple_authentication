@@ -1,11 +1,12 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 var connect = mysql.createConnection(
     {
-        host:"blmhsb5dsyfygebeeakt-mysql.services.clever-cloud.com",
-        user:"u6hwfxsquz7uxz68",
-        password:"UmKQKheZHdYKgJLRCVw5",
-        database:"blmhsb5dsyfygebeeakt",
-        port:3306,
+        host:"containers-us-west-21.railway.app",
+        user:"root",
+        password:"fHdegJ17utSerfPIH3WE",
+        database:"railway",
+        port:6740,
+        insecureAuth : true
        
         
     }

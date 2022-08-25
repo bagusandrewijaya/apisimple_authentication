@@ -6,14 +6,25 @@ const database = require('../connectDb');
 const router = express.Router();
 router.get('/login', (req, res) => {
 var account = req.query;
+var accountbody = req.body;
 var query = "select * from users where username = ? and password = ?";
 database.query(query,[account.username,account.password],(err,rows)=>{
     if (!err) {
         if (rows.length == 0 ) {
-            return res.status(404).json({status:"null"});
+            database.query(query,[accountbody.username,accountbody.password],(err,rows)=>{
+                if (!err) {
+                    if (rows.length == 0 ) {
+                        return res.status(404).json({status:"false"});
+                    }else{
+                        
+                        return res.status(200).json({status:"true",rows});
+                    }}else{
+                    return res.status(500).json(err);
+                }
+            })
         }else{
             
-            return res.status(200).json({status:"ok",rows});
+            return res.status(200).json({status:"true",rows});
         }}else{
         return res.status(500).json(err);
     }
