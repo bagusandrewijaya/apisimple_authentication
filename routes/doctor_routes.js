@@ -18,7 +18,7 @@ router.post('/upload', imagesUpload.upload.single('image'), (req, res, next) => 
  });
  router.get('/all', (req, res) => {
  var sql = "select * from doctor";
- database.query(query,(err,rows)=>{
+ database.query(sql,(err,rows)=>{
     if (!err) {
         if (rows.length == 0) {
             return res.status(200).json({status:"false",response:"no data"});
