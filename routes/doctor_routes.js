@@ -12,7 +12,7 @@ router.post('/upload', imagesUpload.upload.single('image'), (req, res, next) => 
        return res.status(400).send({ message: 'Please upload a file.' });
     }
     var sql = "INSERT INTO doctor(nama,category,directchat,poto) VALUES (?,?,?,?)";
-    database.query(sql,[params.nama,params.category,params.directchat,req.file.filename,para], function(err, result) {
+    database.query(sql,[params.nama,params.category,params.directchat,req.file.filename], function(err, result) {
         return res.send({ message: 'File is successfully.', file });
      });
  });
