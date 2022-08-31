@@ -4,6 +4,19 @@ const { Result } = require('express-validator');
 const { connect } = require('../connectDb');
 const database = require('../connectDb');
 const router = express.Router();
+
+router.get('/alldoctor', (req, res) => {
+var query = "Select * from users";
+database.query(query,(err,rows)=>{
+    if (!err) {
+        if (rows.length == 0) {
+            return res.status(200).json({status:"false",response:"no data"});
+        }else{
+            return res.status(200).json(rows);
+        }
+    }
+})
+});
 router.get('/login', (req, res) => {
 var account = req.query;
 var accountbody = req.body;
