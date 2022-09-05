@@ -4,6 +4,8 @@ const userRoute = require('./routes/users');
 const Doctoroute = require('./routes/doctor_routes');
 const mainmenu = require('./routes/index_routes');
 const path = require("path")
+const apiMetrics = require('prometheus-api-metrics');
+app.use(apiMetrics());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use('/users',userRoute);
